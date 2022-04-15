@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<reviews>
+
+	<review revID="1">
+		<review_title>Dune: A New Science Fiction Experience</review_title>
+		<film_title>Dune</film_title>
+		<author_name>Joesph Venport</author_name>
+		<contributing_author_name></contributing_author_name>
+		<photo_filename>spice.png</photo_filename>
+		<release_date>10/22/2021</release_date>
+		<version_information></version_information>
+		<review_body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum tempus egestas sed sed risus pretium quam vulputate. Proin sagittis nisl rhoncus mattis. Rutrum quisque non tellus orci ac auctor augue mauris augue. Lectus nulla at volutpat diam ut venenatis tellus. Tellus orci ac auctor augue mauris augue neque gravida. Egestas purus viverra accumsan in nisl nisi. Tortor consequat id porta nibh venenatis cras. Enim facilisis gravida neque convallis a cras semper auctor. Morbi enim nunc faucibus a pellentesque sit amet. Fermentum posuere urna nec tincidunt praesent. Ac tincidunt vitae semper quis lectus nulla at. Scelerisque eleifend donec pretium vulputate sapien. Et magnis dis parturient montes nascetur ridiculus mus.</review_body>
+		<movie_rating>PG-13</movie_rating>
+		<number_of_stars>4</number_of_stars>
+	</review>
+
+	<review revID="2">
+		<review_title>Star Wars, A New Hope: fun for everyone</review_title>
+		<film_title>Star Wars, A New Hope</film_title>
+		<author_name>Joesph Venport</author_name>
+		<contributing_author_name>James Krennick</contributing_author_name>
+		<photo_filename>lightsaber.png</photo_filename>
+		<release_date>05/25/1977</release_date>
+		<version_information></version_information>
+		<review_body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum tempus egestas sed sed risus pretium quam vulputate. Proin sagittis nisl rhoncus mattis. Rutrum quisque non tellus orci ac auctor augue mauris augue. Lectus nulla at volutpat diam ut venenatis tellus. Tellus orci ac auctor augue mauris augue neque gravida. Egestas purus viverra accumsan in nisl nisi. Tortor consequat id porta nibh venenatis cras. Enim facilisis gravida neque convallis a cras semper auctor. Morbi enim nunc faucibus a pellentesque sit amet. Fermentum posuere urna nec tincidunt praesent. Ac tincidunt vitae semper quis lectus nulla at. Scelerisque eleifend donec pretium vulputate sapien. Et magnis dis parturient montes nascetur ridiculus mus.</review_body>
+		<movie_rating>PG</movie_rating>
+		<number_of_stars>5</number_of_stars>
+	</review>
+	
+		<review revID="3">
+		<review_title>The Matrix: Defining an style</review_title>
+		<film_title>The Matrix</film_title>
+		<author_name>Moebius</author_name>
+		<contributing_author_name></contributing_author_name>
+		<photo_filename>matrix.png</photo_filename>
+		<release_date>03/31/19999</release_date>
+		<version_information></version_information>
+		<review_body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum tempus egestas sed sed risus pretium quam vulputate. Proin sagittis nisl rhoncus mattis. Rutrum quisque non tellus orci ac auctor augue mauris augue. Lectus nulla at volutpat diam ut venenatis tellus. Tellus orci ac auctor augue mauris augue neque gravida. Egestas purus viverra accumsan in nisl nisi. Tortor consequat id porta nibh venenatis cras. Enim facilisis gravida neque convallis a cras semper auctor. Morbi enim nunc faucibus a pellentesque sit amet. Fermentum posuere urna nec tincidunt praesent. Ac tincidunt vitae semper quis lectus nulla at. Scelerisque eleifend donec pretium vulputate sapien. Et magnis dis parturient montes nascetur ridiculus mus.</review_body>
+		<movie_rating>R</movie_rating>
+		<number_of_stars>4</number_of_stars>
+	</review>
+	
+	
+		<review revID="4">
+		<review_title>Pacific Rim: Kaiju Battles Are Still Fun</review_title>
+		<film_title>Pacific Rim</film_title>
+		<author_name>Moebius</author_name>
+		<contributing_author_name></contributing_author_name>
+		<photo_filename>GiantRobot.png</photo_filename>
+		<release_date>07/12/2013</release_date>
+		<version_information></version_information>
+		<review_body>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum tempus egestas sed sed risus pretium quam vulputate. Proin sagittis nisl rhoncus mattis. Rutrum quisque non tellus orci ac auctor augue mauris augue. Lectus nulla at volutpat diam ut venenatis tellus. Tellus orci ac auctor augue mauris augue neque gravida. Egestas purus viverra accumsan in nisl nisi. Tortor consequat id porta nibh venenatis cras. Enim facilisis gravida neque convallis a cras semper auctor. Morbi enim nunc faucibus a pellentesque sit amet. Fermentum posuere urna nec tincidunt praesent. Ac tincidunt vitae semper quis lectus nulla at. Scelerisque eleifend donec pretium vulputate sapien. Et magnis dis parturient montes nascetur ridiculus mus.</review_body>
+		<movie_rating>PG-13</movie_rating>
+		<number_of_stars>4</number_of_stars>
+	</review>
+
+</reviews>
