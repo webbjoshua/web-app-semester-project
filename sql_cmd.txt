@@ -1,0 +1,16 @@
+CREATE DATABASE reviews;
+use reviews;
+CREATE TABLE reviews  (
+review_title varchar(128),
+film_title varchar(128),
+author_name varchar(32),
+contributing_author_name varchar (32),
+photo_filename varchar(128),
+release_date date,
+version_information decimal(10.2),
+review_body text,
+movie_rating decimal(2.1),
+number_of_stars int
+);
+
+LOAD XML LOCAL INFILE 'review1.xml' into table reviews rows identified by '<review>';
