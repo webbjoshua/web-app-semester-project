@@ -9,8 +9,8 @@ photo_filename varchar(128),
 release_date date,
 version_information decimal(10.2),
 review_body text,
-movie_rating decimal(2.1),
-number_of_stars int
+movie_rating varchar(8);
+number_of_stars decimal(2.1)
 );
 
-LOAD XML LOCAL INFILE 'review.xml' into table reviews rows identified by '<review>';
+LOAD XML LOCAL INFILE 'review_data_file.xml' into table reviews rows identified by '<review>';
