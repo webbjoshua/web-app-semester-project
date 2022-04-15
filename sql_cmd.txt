@@ -13,4 +13,4 @@ movie_rating decimal(2.1),
 number_of_stars int
 );
 
-LOAD XML LOCAL INFILE 'review1.xml' into table reviews rows identified by '<review>';
+LOAD XML LOCAL INFILE 'review.xml' into table reviews rows identified by '<review>';
