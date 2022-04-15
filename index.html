@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+	#rcorners0 {
+		border-radius: 25px;
+		border: 2px solid #73AD21;
+		padding: 20px;
+		width: 650px;
+		height: 150px;
+	}
+
+	#rcorners3 {
+		border: none;
+		padding: 20px;
+		width: 650px;
+		height: 110px;
+	}
+
+	#rcorners5 {
+		border: none;
+		padding: 20px;
+		width: 650px;
+		height: 50px;
+	}
+
+	#rcorners2 {
+		border-radius: 25px;
+		border: 2px solid #73AD21;
+		padding: 20px;
+		width: 650px;
+		height: 350px;
+	}
+
+	img {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 5px;
+		width: 150px;
+	}
+
+	#left {
+		width: 180px;
+		height: 150px;
+		object-fit: none;
+		border: 0px;
+		padding: 0px;
+	}
+
+	#center {
+		text-align: center;
+		border-bottom: 3px solid green;
+	}
+
+	#center1 {
+		text-align: center;
+	}
+
+	.outer {
+		border: 5px dotted rgb(214, 129, 137);
+		border-radius: 5px;
+		width: 450px;
+		padding: 10px;
+		margin-bottom: 40px;
+	}
+
+	.float {
+		padding: 10px;
+		border: 5px solid rgba(214, 129, 137, .4);
+		border-radius: 5px;
+		background-color: rgba(233, 78, 119, .4);
+		color: #fff;
+		float: left;
+		width: 200px;
+		margin: 0 20px 0 0;
+	}
+
+	section,
+	h1 {
+		padding: 0 1em;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(3, 200px);
+		/* 3 columns */
+		grid-template-rows: repeat(3, 150px);
+		/* 3 rows  */
+		grid-gap: 50px 30px;
+		/* 50 pixels of space added between rows and 30 pixels added between columns  */
+	}
+
+	.grid-item {
+		border: thick grey solid;
+		padding: 10px;
+		border-radius: 10px;
+	}
+
+	img {
+		width: 100%;
+		height: 80%;
+	}
+
+	#rcorners1 {
+		border: none;
+		padding: 20px;
+		width: 660px;
+		height: 50px;
+	}
+
+	#center1 {
+		text-align: center;
+	}
+
+	nav {
+		text-align: right;
+		list-style: none;
+		border: none;
+		border-color: white;
+		background-color: none;
+		padding: none;
+		margin: none;
+	}
+
+	li {
+		color: green;
+	}
+
+	.search {
+		position: relative;
+		top: -10%;
+		float: left;
+		margin: 0 auto -ms-transform: translateY(-15%);
+		transform: translateY(-15%);
+	}
+
+	.wrapper {
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: 495px 185px;
+		background-color: #fff;
+		color: #444;
+	}
+
+	.box {
+		background-color: #444;
+		color: #fff;
+		border-radius: 5px;
+		padding: 20px;
+		font-size: 150%;
+	}
+
+	.a {
+		grid-column: 1 / 2;
+		grid-row: 1;
+		text-align: right;
+	}
+
+	.b {
+		grid-column: 2;
+		grid-row: 1;
+	}
+	</style>
+</head>
+
+<body>
+	<section id="center1">
+		<div class="container" id="rcorners3">
+			<div class="wrapper">
+				<div class="box a">Reviews from the Stars</div>
+				<div class="box b">
+					<nav>
+						<li>
+							<div class="search">
+								<form action="/action_page.php">
+									<input type="text" name="search" placeholder="Search Movies" size="16"> </form>
+							</div>
+						</li>
+					</nav>
+				</div>
+			</div>
+			<hr style="width:106%">
+			<div class="container">
+				<div class="demo-flex-spacer"></div>
+				<h2>Featured Review</h2> </div>
+			<div class="container" id="rcorners0">
+				<div class="block"> <img class="float" id="left" src="paris.jpg" alt="Paris"></div>Featured Review! </div>
+			<div class="container" id="rcorners1">
+				<hr style="border-width: 2px;width:20%">
+				<h1 id="center1">
+    Now playing
+                            </h1> </div>
+			<div class="container" id="rcorners2">
+				<div class="grid">
+					<div class="grid-item"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/01.png"> Movie Title </div>
+					<div class="grid-item"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/02.png">Movie Title</div>
+					<div class="grid-item"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/03.png">Movie Title</div>
+					<div class="grid-item"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/04.png">Movie Title</div>
+					<div class="grid-item"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/05.png">Movie Title</div>
+					<div class="grid-item"> <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/06.png">Movie Title</div>
+				</div>
+			</div>
+			<div class="container" id="rcorners1">
+				<hr style="border-width: 2px; width:20%">
+				<h2 id="center1">More Reviews</h2> </div>
+			<div class="container" id="rcorners0">
+				<div class="block"> <img class="float" id="left" src="paris.jpg" alt="Paris"></div>More Reviews! </div>
+</body>
+
+</html>
