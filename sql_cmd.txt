@@ -16,3 +16,8 @@ number_of_stars decimal(2.1)
 LOAD XML LOCAL INFILE 'review_data_file.xml' into table reviews rows identified by '<review>';
 
 mysql -u root -ppassword --xml -e 'SELECT * FROM reviews.reviews' > reviews.xml
+
+LOAD XML INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/review_data_file.xml" into table reviews rows identified by '<review>';
+
+Should be able to load webAppFinal.mwb as a model in MySqL
+My version of MySQL defaulted the database name to mydb

@@ -3,153 +3,9 @@
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%
-    class Movie{
-        private String review_title;
-        private String film_title;
-        private String author_name;
-        private String contributing_author_name;
-        private String photo_filename;
-        private String release_date;
-        private String version_information;
-        private String review_body;
-        private String movie_rating;
-        private String number_of_stars;
-
-        public Movie(ArrayList<String> MovieContents, int startIndex){
-            this.review_title = MovieContents.get(startIndex);
-            this.film_title = MovieContents.get(startIndex+1);
-            this.author_name = MovieContents.get(startIndex+2);
-            this.contributing_author_name = MovieContents.get(startIndex+3);
-            this.photo_filename = MovieContents.get(startIndex+4);
-            this.release_date = MovieContents.get(startIndex+5);
-            this.version_information = MovieContents.get(startIndex+6);
-            this.review_body = MovieContents.get(startIndex+7);
-            this.movie_rating = MovieContents.get(startIndex+8);
-            this.number_of_stars = MovieContents.get(startIndex+9);
-        }
-
-        public String getContributing_author_name() {
-            return contributing_author_name;
-        }
-
-        public String getAuthor_name() {
-            return author_name;
-        }
-
-        public String getFilm_title() {
-            return film_title;
-        }
-
-        public String getReview_title() {
-            return review_title;
-        }
-
-        public String getMovie_rating() {
-            return movie_rating;
-        }
-
-        public String getPhoto_filename() {
-            return photo_filename;
-        }
-
-        public String getRelease_date() {
-            return release_date;
-        }
-
-        public String getVersion_information() {
-            return version_information;
-        }
-
-        public String getNumber_of_stars() {
-            return number_of_stars;
-        }
-
-        public String getReview_body() {
-            return review_body;
-        }
-
-        public void setAuthor_name(String author_name) {
-            this.author_name = author_name;
-        }
-
-        public void setContributing_author_name(String contributing_author_name) {
-            this.contributing_author_name = contributing_author_name;
-        }
-
-        public void setFilm_title(String film_title) {
-            this.film_title = film_title;
-        }
-
-        public void setPhoto_filename(String photo_filename) {
-            this.photo_filename = photo_filename;
-        }
-
-        public void setMovie_rating(String movie_rating) {
-            this.movie_rating = movie_rating;
-        }
-
-        public void setRelease_date(String release_date) {
-            this.release_date = release_date;
-        }
-
-        public void setReview_title(String review_title) {
-            this.review_title = review_title;
-        }
-
-        public void setReview_body(String review_body) {
-            this.review_body = review_body;
-        }
-
-        public void setNumber_of_stars(String number_of_stars) {
-            this.number_of_stars = number_of_stars;
-        }
-
-        public void setVersion_information(String version_information) {
-            this.version_information = version_information;
-        }
-    }
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-%>
-
-<%
-    DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-    DocumentBuilder builder = dbFactory.newDocumentBuilder();
-    String path = application.getRealPath("./");
-
-    Document reviews = builder.parse(path+"reviews.xml");
-    reviews.normalize();
-
-    NodeList movies =  reviews.getElementsByTagName("row");
-    NamedNodeMap attributes = reviews.getAttributes();
-
-
-
-    int reviewItemIndex;
-    int childItemIndex;
-    String movieText;
-    NodeList childNodes;
-    ArrayList MovieTextInfo = new ArrayList<String>();
-    for (reviewItemIndex = 0; reviewItemIndex<=movies.getLength()-1; reviewItemIndex++){
-        childNodes = movies.item(reviewItemIndex).getChildNodes();
-        for (childItemIndex=0; childItemIndex<=childNodes.getLength()-1;childItemIndex++) {
-            if (childNodes.item(childItemIndex).hasAttributes() == true){
-                childNodes.item(childItemIndex).normalize();
-                movieText = childNodes.item(childItemIndex).getTextContent();
-                MovieTextInfo.add(movieText);
-            }
-
-        }
-    }
-
-    Movie duneMovie = new Movie(MovieTextInfo,0);
-    Movie starWarsMovie = new Movie(MovieTextInfo,10);
-    Movie matrixMovie = new Movie(MovieTextInfo,20);
-    Movie pacificRimMovie = new Movie(MovieTextInfo,30);
-
-
-%>
 
 <!DOCTYPE html>
 <html>
@@ -416,18 +272,15 @@
         <h1 id="center1"> Now playing </h1></div>
     <div class="container" id="rcorners2">
         <div class="grid">
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/01.png"> <%=duneMovie.getFilm_title()%>
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/02.png"> <%=starWarsMovie.getFilm_title()%>
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/03.png"> <%=matrixMovie.getFilm_title()%>
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/04.png"> <%=pacificRimMovie.getFilm_title()%>
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/05.png">Movie Title
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/06.png">Movie Title
-            </div>
+            <form action="FetchMovieServlet">
+                <c:forEach var="each_movie" items="${list_of_movie}">
+                    <%
+                        int i = 0;
+                    %>
+                    <div class="grid-item<%=i%>"><img src="${each_movie.getPhoto_filename()}">${each_movie.getReview_title()}</div>
+                    <% i++; %>
+                </c:forEach>
+            </form>
         </div>
     </div>
     <div class="container" id="rcorners1">
