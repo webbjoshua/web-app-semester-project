@@ -1,3 +1,13 @@
 *.bak
 
 *[0-9].*
+.idea/workspace.xml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/dataSources/c495e1a6-f60d-4cb9-9846-21114599c389/storage_v2/_src_/schema/information_schema.FNRwLQ.meta
+.idea/dataSources/c495e1a6-f60d-4cb9-9846-21114599c389/storage_v2/_src_/schema/information_schema.FNRwLQ.zip
+.idea/dataSources/c495e1a6-f60d-4cb9-9846-21114599c389/storage_v2/_src_/schema/mysql.osA4Bg.meta
+.idea/dataSources/c495e1a6-f60d-4cb9-9846-21114599c389/storage_v2/_src_/schema/performance_schema.kIw0nw.meta
+.idea/dataSources/c495e1a6-f60d-4cb9-9846-21114599c389/storage_v2/_src_/schema/sys.zb4BAA.meta
+.idea/workspace.xml
+.idea/webContexts.xml

@@ -1,8 +1,14 @@
+<%@ page import="javax.xml.parsers.DocumentBuilderFactory" %>
+<%@ page import="javax.xml.parsers.DocumentBuilder" %>
+<%@ page import="org.w3c.dom.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     <style>
@@ -219,7 +225,6 @@
         }
     </style>
 </head>
-
 <body>
 <section id="center1">
     <div class="container" id="rcorners1">
@@ -267,18 +272,15 @@
         <h1 id="center1"> Now playing </h1></div>
     <div class="container" id="rcorners2">
         <div class="grid">
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/01.png"> Movie Title 1
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/02.png">Movie Title 2
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/03.png">Movie Title
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/04.png">Movie Title
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/05.png">Movie Title
-            </div>
-            <div class="grid-item"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/76301/06.png">Movie Title
-            </div>
+            <form action="FetchMovieServlet">
+                <c:forEach var="each_movie" items="${list_of_movie}">
+                    <%
+                        int i = 0;
+                    %>
+                    <div class="grid-item<%=i%>"><img src="${each_movie.getPhoto_filename()}">${each_movie.getReview_title()}</div>
+                    <% i++; %>
+                </c:forEach>
+            </form>
         </div>
     </div>
     <div class="container" id="rcorners1">
@@ -290,5 +292,34 @@
     </div>
 </section>
 </body>
-
 </html>
+
+<%--
+<form>
+        <%
+
+            int reviewItemIndex;
+            int childItemIndex;
+            String movieText;
+            NodeList childNodes;
+            ArrayList MovieTextInfo = new ArrayList<String>();
+            for (reviewItemIndex = 0; reviewItemIndex<=movies.getLength()-1; reviewItemIndex++){
+                childNodes = movies.item(reviewItemIndex).getChildNodes();
+                for (childItemIndex=0; childItemIndex<=childNodes.getLength()-1;childItemIndex++) {
+                    if (childNodes.item(childItemIndex).hasAttributes() == true){
+                        childNodes.item(childItemIndex).normalize();
+                        movieText = childNodes.item(childItemIndex).getTextContent();
+                        MovieTextInfo.add(movieText);
+                    }
+
+                }
+            }
+
+            for(Object element: MovieTextInfo){
+                out.println("The file information is:" + element);
+            }
+        %>
+
+
+    </form>
+--%>
