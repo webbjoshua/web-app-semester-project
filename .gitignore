@@ -1,5 +1,5 @@
-*.bak
-*.old
+*.bak*
+*.old*
 
 *[0-9].*
 .idea/workspace.xml
