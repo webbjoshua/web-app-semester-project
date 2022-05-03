@@ -183,57 +183,6 @@ public class MySQLdb {
 
         return movieModel;
     }
-/*
-    public List<AlbumModel> fetchAlbums() throws SQLException {
-        List<AlbumModel> list = new ArrayList<>();
-        String qGetAlbums = "SELECT * FROM albums";
-        PreparedStatement preparedStatement = connection.prepareStatement(qGetAlbums);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        while(resultSet.next()) {
-            int album_id = resultSet.getInt("album_id");
-            String album_name = resultSet.getString("album_name");
-            AlbumModel albumModel = new AlbumModel(album_id, album_name);
-            list.add(albumModel);
-        }
-        resultSet.close();
-        preparedStatement.close();
-        return list;
-    }
 
-
-    // WHEN USING INSERT/UPDATE/DELETE --> executeUpdate()
-    // SELECT --> executeQuery()
-    public boolean doReserve(String email, int song_id) throws SQLException {
-        boolean result = false;
-        String qDoReserve = "INSERT INTO reserve VALUES(?, ?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(qDoReserve);
-        preparedStatement.setString(1, email);
-        preparedStatement.setInt(2, song_id);
-        int rows_update = preparedStatement.executeUpdate();
-        if(rows_update > 0) {
-            result = true;
-        }
-        preparedStatement.close();
-        return result;
-    }
-
-    public List<MusicModel> getReservedMusic(String email) throws SQLException {
-        List<MusicModel> list = new ArrayList<>();
-        String qGetReserved = "SELECT S.song_id, A.album_id, S.song_name, A.album_name FROM songs as S, albums as A, reserve as R WHERE R.song_id = S.song_id AND S.album_id = A.album_id AND R.email = '"+email+"'";
-        PreparedStatement preparedStatement = connection.prepareStatement(qGetReserved);
-        ResultSet resultSet = preparedStatement.executeQuery();
-        while(resultSet.next()) {
-            int album_id = resultSet.getInt("album_id");
-            String album_name = resultSet.getString("album_name");
-            int song_id = resultSet.getInt("song_id");
-            String song_name = resultSet.getString("song_name");
-            MusicModel musicModel = new MusicModel(song_id, album_id, song_name, album_name);
-            list.add(musicModel);
-        }
-        resultSet.close();
-        preparedStatement.close();
-        return list;
-    }
-    */
 
 }

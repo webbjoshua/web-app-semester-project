@@ -244,6 +244,9 @@
                             <div class="row">
                                 <a href="LogoutServlet" style="text-align:center;color:white" class="btn">Logout</a>
                             </div>
+                            <div class="row">
+                                <a href="addReview.jsp" style="text-align:center;color:white" class="btn">Add Review</a>
+                            </div>
                         </div>
                     </li>
                 </nav>

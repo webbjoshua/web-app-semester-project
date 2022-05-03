@@ -134,7 +134,7 @@
             <h2 style="text-align:center">Login</h2>
 
             <input type="text" name="username" placeholder="Username" required>
-            <input type="text" name="password" placeholder="Password" required>
+            <input type="password" name="password" placeholder="Password" required>
             <input type="submit" value="Login">
             <span id="error_msg"></span>
         </div>
