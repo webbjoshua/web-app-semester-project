@@ -132,7 +132,36 @@ public class MySQLdb {
         String qGetMovie = null;
         List<MovieModel> list = new ArrayList<>();
 
-        qGetMovie = "SELECT R.review_title, R.film_title, R.author_name, R.contributing_author_name, R.photo_filename, R.release_date, R.version_information, R.review_body, R.movie_rating, R.number_of_stars FROM reviews as R";
+        qGetMovie = "SELECT R.revID, R.review_title, R.film_title, R.author_name, R.contributing_author_name, R.photo_filename, R.release_date, R.version_information, R.review_body, R.movie_rating, R.number_of_stars FROM reviews as R Order by rand()";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(qGetMovie);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()) {
+            int revID = resultSet.getInt("revID");
+            String review_title = resultSet.getString("review_title");
+            String film_title = resultSet.getString("film_title");
+            String author_name = resultSet.getString("author_name");
+            String contributing_author_name = resultSet.getString("contributing_author_name");
+            String photo_filename = resultSet.getString("photo_filename");
+            Date release_date = resultSet.getDate("release_date");
+            float version_information = resultSet.getFloat("version_information");
+            String review_body = resultSet.getString("review_body");
+            String movie_rating = resultSet.getString("movie_rating");
+            float number_of_stars = resultSet.getFloat("number_of_stars");
+            MovieModel movieModel = new MovieModel(revID, review_title, film_title, author_name, contributing_author_name, photo_filename, release_date, version_information, review_body, movie_rating, number_of_stars);
+            list.add(movieModel);
+        }
+        resultSet.close();
+        preparedStatement.close();
+
+        return list;
+    }
+
+    public MovieModel fetchSingleMovie(int revID) throws SQLException {
+        String qGetMovie = null;
+        MovieModel movieModel = null;
+
+        qGetMovie = "SELECT R.revID, R.review_title, R.film_title, R.author_name, R.contributing_author_name, R.photo_filename, R.release_date, R.version_information, R.review_body, R.movie_rating, R.number_of_stars FROM reviews as R WHERE R.revID = '"+ revID +"'";
 
         PreparedStatement preparedStatement = connection.prepareStatement(qGetMovie);
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -147,13 +176,12 @@ public class MySQLdb {
             String review_body = resultSet.getString("review_body");
             String movie_rating = resultSet.getString("movie_rating");
             float number_of_stars = resultSet.getFloat("number_of_stars");
-            MovieModel movieModel = new MovieModel(review_title, film_title, author_name, contributing_author_name, photo_filename, release_date, version_information, review_body, movie_rating, number_of_stars);
-            list.add(movieModel);
+            movieModel = new MovieModel(revID, review_title, film_title, author_name, contributing_author_name, photo_filename, release_date, version_information, review_body, movie_rating, number_of_stars);
         }
         resultSet.close();
         preparedStatement.close();
 
-        return list;
+        return movieModel;
     }
 /*
     public List<AlbumModel> fetchAlbums() throws SQLException {

@@ -3,9 +3,11 @@
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="models.UserModel" %>
+<%@ page import="models.MovieModel" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <!DOCTYPE html>
@@ -49,15 +51,10 @@
             padding: 20px;
             width: 50%;
             margin: auto;
-            height: 350px;
+            height: 400px;
         }
 
-        img {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
-            width: 150px;
-        }
+
 
         #left {
             width: 180px;
@@ -101,9 +98,9 @@
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(3, 200px);
+            grid-template-columns: repeat(4, 200px);
             /* 3 columns */
-            grid-template-rows: repeat(3, 150px);
+            grid-template-rows: repeat(4, 150px);
             /* 3 rows  */
             grid-gap: 50px 30px;
             /* 50 pixels of space added between rows and 30 pixels added between columns  */
@@ -115,10 +112,11 @@
             border-radius: 10px;
         }
 
-        img {
-            width: 100%;
-            height: 80%;
+        gridImage{
+            height: 20px;
+            width: 20px;
         }
+
 
         #rcorners1 {
             border: green solid #73AD21;
@@ -215,11 +213,6 @@
             text-align: right;
         }
 
-        img {
-            width: 90%;
-            max-height: 100%;
-        }
-
         hr {
             display: inline-block;
         }
@@ -280,22 +273,30 @@
     </div>
     <div class="container" id="rcorners10">
         <h1 id="center1"> Featured Review </h1></div>
-    <div class="container" id="rcorners0">
-        <div class="block"><img class="float" id="left" src="https://www.w3schools.com/css/paris.jpg" alt="Paris"></div>
-        Featured Review!
-    </div>
+    <c:forEach var="featured_movie" items="${list_of_movie}" end="0">
+        <div class="container" id="rcorners0">
+            <div class="block"><img class="float" src="${featured_movie.getPhoto_filename()}" width="150" height="100"></div>
+            <h2>${featured_movie.getReview_title()}</h2> <br>
+            <p>${featured_movie.getReview_body()}</p>
+        </div>
+    </c:forEach>
+
     <div class="container" id="rcorners1">
         <hr style="border-width: 2px;width:20%">
         <h1 id="center1"> Now playing </h1></div>
     <div class="container" id="rcorners2">
         <div class="grid">
             <form action="FetchMovieServlet">
-                <c:forEach var="each_movie" items="${list_of_movie}">
-                    <%
-                        int i = 0;
-                    %>
-                    <div class="grid-item<%=i%>"><img src="${each_movie.getPhoto_filename()}">${each_movie.getReview_title()}</div>
-                    <% i++; %>
+                <c:forEach var="each_movie" items="${list_of_movie}" begin="1" end="8">
+
+                    <form action="ViewReviewServlet" method="post">
+                        <div class="row">
+                            <img src="${each_movie.getPhoto_filename()}" width="150" height="100">
+                            <p>${each_movie.getReview_title()}</p>
+                            <input type="text" id="revID" name="revID" value="${each_movie.getRevID()}" hidden="true" ></input>
+                            <input type="submit" value="View Review">
+                        </div>
+                    </form>
                 </c:forEach>
             </form>
         </div>
@@ -303,9 +304,22 @@
     <div class="container" id="rcorners1">
         <hr style="border-width: 2px; width:20%">
         <h2 id="center1">More Reviews</h2></div>
-    <div class="container" id="rcorners0">
-        <div class="block"><img class="float" id="left" src="https://www.w3schools.com/css/paris.jpg" alt="Paris"></div>
-        More Reviews!
+    <div class="container" id="rcorners2">
+        <div class="grid">
+            <form action="FetchMovieServlet">
+                <c:forEach var="each_movie" items="${list_of_movie}" begin="9">
+
+                    <form action="ViewReviewServlet" method="post">
+                        <div class="row">
+                            <img src="${each_movie.getPhoto_filename()}" width="150" height="100">
+                            <p>${each_movie.getReview_title()}</p>
+                            <input type="text" id="revID" name="revID" value="${each_movie.getRevID()}" hidden="true" ></input>
+                            <input type="submit" value="View Review">
+                        </div>
+                    </form>
+                </c:forEach>
+            </form>
+        </div>
     </div>
     <span id="error_msg"></span>
 </section>

@@ -1,23 +1,27 @@
-<%--
+<%@ page import="models.MovieModel" %><%--
   Created by IntelliJ IDEA.
   User: wcfba
   Date: 5/2/2022
   Time: 10:15 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style type="text/css">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/v4-shims.js"></script>
+    <style>
         #rcorners0 {
+            margin: auto;
             border-radius: 25px;
             border: 2px solid #73AD21;
             padding: 20px;
-            width: 650px;
-            height: 150px;
+            width: 50%;
+            height: 750px;
         }
 
         #rcorners3 {
@@ -30,9 +34,9 @@
             border: none;
             border-radius: 25px;
             padding: 20px;
-            width: 650px;
+            width: 100%;
             height: 350px;
-            text-align: left;
+            text-align: center;
         }
 
         img {
@@ -86,6 +90,13 @@
         section,
         h1 {
             padding: 0 1em;
+
+            text-align: center;
+        }
+        h2 {
+            padding: 0 1em;
+
+            text-align: center;
         }
 
 
@@ -97,14 +108,14 @@
         #rcorners1 {
             border: green solid #73AD21;
             padding: 20px;
-            width: 660px;
+            width: 100%;
             height: 45px;
         }
 
         #rcorners10 {
-            border: none;
+            border: green solid #73AD21;
             width: 660px;
-            height: 105px;
+            height: 805px;
         }
 
         #center1 {
@@ -143,7 +154,7 @@
         .wrapper {
             display: grid;
             grid-gap: 5px 10px;
-            grid-template-columns: 460px 185px;;
+            grid-template-columns: 75% 25%;
             grid-template-rows: 65px 20px;
             background-color: #fff;
             color: #444;
@@ -160,7 +171,7 @@
         .a {
             grid-column: 1 / 2;
             grid-row: 1 /2;
-            text-align: right;
+            text-align: center;
         }
 
         .b {
@@ -185,13 +196,42 @@
         }
         .twentysixpoint {line-height: 3pt;}
 
-        .checked {
-            color: orange;
+        .scrollabletextbox {
+            height:300px;
+            width:600px;
+            font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+            font-size: 82%;
+            overflow:scroll;
         }
 
+        /* Set a style for the submit button */
+        .submitbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        .submitbtn:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+<%
+    if (request.getSession() != null) {
+        if (session.getAttribute("currentMovie") == null) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
+            //request.setAttribute("error", "Please login to continue!");
+            requestDispatcher.forward(request, response);
+        }
+    }
+    MovieModel currentMovie = (MovieModel) session.getAttribute("currentMovie");
+%>
 <section id="center1">
     <div class="container" id="rcorners1">
         <div class="wrapper">
@@ -200,9 +240,9 @@
                 <nav>
                     <li>
                         <div class="search">
-                            <form action="/action_page.php"> <input name="search" placeholder="Search Movies"
-
-                                                                    size="15" type="text"> </form>
+                            <div class="row">
+                                <a href="LogoutServlet" style="text-align:center;color:white" class="btn">Logout</a>
+                            </div>
                         </div>
                     </li>
                 </nav>
@@ -211,80 +251,30 @@
     </div>
     <div class="container" id="rcorners_hr">
         <hr style="width:92%"> </div>
-    <div class="container" id="rcorners10">
-        <h1 id="center1">Review Title</h1>
+    <div class="container" id="rcorners0">
+        <div class="block"> <img class="float" id="left" src="<%=currentMovie.getPhoto_filename()%>" alt="Picture" width="250" height="200"></div>
+        <h1><%=currentMovie.getReview_title()%></h1>
+        <h1> <%=currentMovie.getFilm_title()%> , <%=currentMovie.getMovie_rating()%> </h1>
+        <h2>By: <%=currentMovie.getAuthor_name()%></h2>
         <table style="width:100%">
             <tbody>
-            <tr>
-                <td> <span class="fa fa-star checked"></span> <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span> <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span> </td>
-            </tr>
-            <tr>
-                <td>Author, date</td>
-            </tr>
-            <tr>
-            </tr>
+                 <tr>
+                     <td>
+                         <% for(int i =0; i < 5; i++){%>
+                         <% if(i < currentMovie.getNumber_of_stars()){ %>
+                         <span class="fas fa-star"></span>
+                         <%} else { %>
+                         <span class="far fa-star"></span>
+                         <% } %>
+                         <% } %>
+                     </td>
+                </tr>
+                <tr>
+                </tr>
             </tbody>
         </table>
-    </div>
-    <div class="container" id="rcorners0">
-        <div class="block"> <img class="float" id="left" src="https://www.w3schools.com/css/paris.jpg"
-
-                                 alt="Paris"></div>
-        Picture!
-        <p> Please limit the text length here to avoid overflow. </p>
-        <p align="left"> Lorem ipsum dolor sit amet, consectetur adipiscing
-            elit. Quisque cursus dui et pharetra scelerisque. Fusce at maximus
-            nibh. Morbi luctus laoreet felis, quis vestibulum nulla. Vivamus
-            auctor nisl ante, ut ullamcorper quam maximus et. Nulla sit amet
-            libero malesuada. </p>
         <div class="container" id="rcorners3"> </div>
-        <div class="container" id="rcorners2"> Lorem ipsum dolor sit amet,
-            consectetur adipiscing elit. Quisque cursus dui et pharetra
-            scelerisque. Fusce at maximus nibh. Morbi luctus laoreet felis, quis
-            vestibulum nulla. Vivamus auctor nisl ante, ut ullamcorper quam
-            maximus et. Nulla sit amet libero malesuada, viverra tortor id,
-            ullamcorper metus. Suspendisse blandit ac lacus quis tincidunt. Donec
-            ultrices varius neque, non suscipit sapien congue non. Pellentesque ac
-            ornare nunc, quis pharetra enim. Nunc nec nisi nec ligula tincidunt
-            tempor. Curabitur a suscipit sapien. Duis at feugiat felis. Cras
-            fermentum euismod posuere. Pellentesque tristique risus sed cursus
-            tincidunt. Cras finibus urna eu lacus tempus sodales. Cras ex est,
-            placerat vel massa ut, fringilla consequat est. Curabitur bibendum
-            turpis risus, vel finibus risus bibendum et. Nulla sit amet augue
-            scelerisque, semper enim mattis, feugiat odio. Phasellus vel nulla id
-            libero pharetra eleifend sit amet id lorem. Maecenas magna eros,
-            vestibulum non ex sit amet, euismod eleifend ipsum. Nulla consectetur
-            convallis quam, ac gravida massa posuere eu. Etiam id tincidunt dolor.
-            Proin enim lorem, placerat porta molestie vitae, dignissim vel purus.
-            Donec lorem eros, tincidunt ut placerat at, porttitor eget erat.
-            Suspendisse blandit at est ut maximus. Donec ut enim sit amet ligula
-            malesuada tincidunt. Vestibulum ante ipsum primis in faucibus orci
-            luctus et ultrices posuere cubilia curae; Phasellus porta commodo
-            feugiat. Class aptent taciti sociosqu ad litora torquent per conubia
-            nostra, per inceptos himenaeos. Quisque metus ligula, feugiat egestas
-            risus in, elementum rutrum sapien. Etiam cursus id sem vel
-            consectetur. Fusce eget diam at sem tristique feugiat a et velit.
-            Quisque leo felis, porta in enim tempor, sodales faucibus sem. Aliquam
-            a malesuada ligula, ac mollis mi. Vivamus egestas, sem at ullamcorper
-            fringilla, purus metus tempus enim, eget condimentum diam tortor in
-            quam. Nam a elit placerat, tristique nulla non, pulvinar diam. Ut id
-            ornare neque, ut auctor ligula. Pellentesque blandit augue turpis,
-            molestie interdum lorem venenatis ac. Etiam mi purus, efficitur at
-            iaculis et, lobortis ut eros. Nunc nec risus viverra, porttitor magna
-            ut, eleifend magna. Integer a purus a nunc iaculis blandit ac sed
-            nulla. Curabitur feugiat, ante ac malesuada consequat, quam nisl
-            ullamcorper odio, ut posuere ex elit eu erat. Phasellus in aliquet
-            arcu. Morbi pulvinar dolor lorem. Phasellus dapibus nisi non lacus
-            vestibulum, nec consequat lectus fringilla. Mauris maximus elit dolor,
-            vitae aliquam dolor tempus id. Fusce dui tortor, rutrum ac elit vitae,
-            posuere blandit turpis. Vestibulum sed dictum tortor, eu faucibus
-            tellus. Vestibulum a venenatis mi. Sed pellentesque nec risus non
-            dapibus. Duis molestie bibendum maximus. Phasellus vel eros finibus,
-            vehicula massa volutpat, rutrum velit. Duis et varius neque, id
-            tincidunt ex. Quisque vel rhoncus metus. Aliquam vel sem odio. Nulla
-            vel eros nulla. In mollis leo et eros vestibulum rutrum. </div>
+        <div class="container" id="rcorners2"> <%= currentMovie.getReview_body() %> </div>
     </div>
 </section>
 </body>

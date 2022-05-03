@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class MovieModel {
+     int revID;
      String review_title;
      String film_title;
      String author_name;
@@ -14,7 +15,8 @@ public class MovieModel {
      String movie_rating;
      float number_of_stars;
 
-    public MovieModel(String review_title, String film_title, String author_name, String contributing_author_name, String photo_filename, Date release_date, float version_information, String review_body, String movie_rating, float number_of_stars){
+    public MovieModel(int revID, String review_title, String film_title, String author_name, String contributing_author_name, String photo_filename, Date release_date, float version_information, String review_body, String movie_rating, float number_of_stars){
+        this.revID = revID;
         this.review_title = review_title;
         this.film_title = film_title;
         this.author_name = author_name;
@@ -25,6 +27,14 @@ public class MovieModel {
         this.review_body = review_body;
         this.movie_rating = movie_rating;
         this.number_of_stars = number_of_stars;
+    }
+
+    public int getRevID(){
+        return revID;
+    }
+
+    public void setRevID(int revID){
+        this.revID = revID;
     }
 
     public String getReview_title() {
