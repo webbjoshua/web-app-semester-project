@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <style>
+	#rcorners0 {
+		border-radius: 25px;
+		border: 2px solid #73AD21;
+		padding: 20px;
+		width: 650px;
+		height: 550px;
+	}
+
+	#rcorners3 {
+		border: none;
+		width: 650px;
+		height: 10px;
+    padding:-5px;
+	}
+	#rcorners2 {
+		border: none;
+    border-radius: 25px;
+		padding: 20px;
+		width: 650px;
+		height: 350px;
+	}
+
+	img {
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 5px;
+		width: 150px;
+	}
+
+	#left {
+		width: 180px;
+		height: 150px;
+		object-fit: none;
+		border: 0px;
+		padding: 0px;
+	}
+
+	#center {
+		text-align: center;
+		border-bottom: 3px solid green;
+	}
+
+	#center1 {
+		text-align: center;
+	}
+
+table, th, td {
+  border:none;
+  text-align: center;
+}
+
+	.outer {
+		border: 5px dotted rgb(214, 129, 137);
+		border-radius: 5px;
+		width: 450px;
+		padding: 10px;
+		margin-bottom: 40px;
+	}
+
+	.float {
+		padding: 10px;
+		border: 5px solid rgba(214, 129, 137, .4);
+		border-radius: 5px;
+		background-color: rgba(233, 78, 119, .4);
+		color: #fff;
+		float: left;
+		width: 200px;
+		margin: 0 20px 0 0;
+	}
+
+	section,
+	h1 {
+		padding: 0 1em;
+	}
+
+
+	img {
+		width: 100%;
+		height: 80%;
+	}
+
+	#rcorners1 {
+		border: green solid #73AD21;
+		padding: 20px;
+		width: 660px;
+		height: 45px;
+	}
+
+  #rcorners10 {
+		border: green solid #73AD21;
+		width: 660px;
+		height: 805px;
+	}
+
+	#center1 {
+		text-align: center;
+	}
+
+	nav {
+		text-align: right;
+		list-style: none;
+		border: none;
+		border-color: white;
+		background-color: none;
+		padding: none;
+		margin: none;
+	}
+
+	li {
+		color: green;
+	}
+
+	.search {
+		position: relative;
+		top: -10%;
+		float: left;
+		margin: 0 auto -ms-transform: translateY(-15%);
+		transform: translateY(-15%);
+	}
+
+  .login {
+		position: relative;
+		float: right;
+		margin: 0 auto -ms-transform: translateY(-60%);
+		transform: translateY(-60%);
+	}
+
+	.wrapper {
+		display: grid;
+		grid-gap: 5px 10px;
+		grid-template-columns: 460px 185px;;
+		grid-template-rows: 65px 20px;
+		background-color: #fff;
+		color: #444;
+	}
+
+	.box {
+		background-color: #444;
+		color: #fff;
+		border-radius: 5px;
+		padding: 20px;
+		font-size: 150%;
+	}
+
+	.a {
+		grid-column: 1 / 2;
+		grid-row: 1 /2;
+		text-align: right;
+	}
+
+	.b {
+		grid-column: 2;
+		grid-row: 1/2;
+	}
+
+	.c {
+		grid-column: 1 /3;
+		grid-row: 2;
+		text-align: right;
+	}
+
+      
+	img {
+		width: 90%;
+		max-height: 100%;
+	}
+
+hr {
+  display: inline-block;
+}
+.twentysixpoint {line-height: 3pt;}
+     
+.scrollabletextbox {
+    height:300px;
+    width:600px;
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 82%;
+    overflow:scroll;
+}      
+	</style>
+  </head>
+  <body>
+    <section id="center1">
+      <div class="container" id="rcorners1">
+        <div class="wrapper">
+          <div class="box a">Reviews from the Stars</div>
+          <div class="box b">
+            <nav>
+              <li>
+                <div class="search">
+                  <form action="/action_page.php"> <input name="search" placeholder="Search Movies"
+
+                      size="15" type="text"> </form>
+                </div>
+              </li>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="rcorners_hr">
+        <hr style="width:92%"> </div>
+      <form action="/action_page.php" method="post">
+        <div class="container" id="rcorners0">
+          <h1 id="center1">Review A Movie</h1>
+          <p> <input id="fname" name="fname" style="width:70%; height:25px" placeholder="Review title"
+
+              type="text"></p>
+          <p> <input id="fname" name="fname" style="width:70%; height:25px" placeholder="Not clear on the picture. Please fill in."
+
+              type="text"> </p>
+          <table>
+            <tbody>
+              <tr>
+                <td style="text-align:right; width:65%">Star rating:</td>
+                <td>
+                  <select name="cars" id="cars" style="width:150px">
+                    <option value="1">1 star</option>
+                    <option value="2">2 stars</option>
+                    <option value="3">3 stars</option>
+                    <option value="4">4 stars</option>
+                    <option value="5">5 stars</option>
+                  </select>
+                </td>
+                <td><br>
+                </td>
+              </tr>
+              <tr>
+              </tr>
+            </tbody>
+          </table>
+          <label for="picture">Select a review picture:</label> <input id="picture"
+
+            name="myfile" type="file"> <textarea class="scrollabletextbox" name="note">Type the review here!</textarea>
+        </div>
+      </form>
+    </section>
+  </body>
+</html>
