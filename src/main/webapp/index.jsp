@@ -2,6 +2,7 @@
 <%@ page import="javax.xml.parsers.DocumentBuilder" %>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="models.UserModel" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -13,10 +14,11 @@
     <meta http-equiv="content-type" content="text/html; charset=windows-1252">
     <style>
         #rcorners0 {
+            margin: auto;
             border-radius: 25px;
             border: 2px solid #73AD21;
             padding: 20px;
-            width: 650px;
+            width: 50%;
             height: 150px;
         }
 
@@ -45,7 +47,8 @@
             border-radius: 25px;
             border: 2px solid #73AD21;
             padding: 20px;
-            width: 650px;
+            width: 50%;
+            margin: auto;
             height: 350px;
         }
 
@@ -120,29 +123,30 @@
         #rcorners1 {
             border: green solid #73AD21;
             padding: 20px;
-            width: 660px;
+            width: 100%;
             height: 67px;
         }
 
         #rcorners10 {
             border: none;
             padding: 20px;
-            width: 660px;
+            width: 50%;
             height: 35px;
-            margin-top: 1px;
-            margin-bottom: 4px;
+            margin: auto;
         }
 
         #rcorners_hr {
+            margin: auto;
             border: none;
             padding: 20px;
-            width: 660px;
+            width: 50%;
             height: 2px;
-            margin-top: -2px;
-            margin-bottom: -50px;
+
         }
 
         #center1 {
+            margin: auto;
+            width: 100%;
             text-align: center;
         }
 
@@ -180,7 +184,7 @@
         .wrapper {
             display: grid;
             grid-gap: 5px 10px;
-            grid-template-columns: 460px 185px;;
+            grid-template-columns: 75% 25%;
             grid-template-rows: 65px 20px;
             background-color: #fff;
             color: #444;
@@ -197,7 +201,7 @@
         .a {
             grid-column: 1 / 2;
             grid-row: 1 /2;
-            text-align: right;
+            text-align: center;
         }
 
         .b {
@@ -226,6 +230,16 @@
     </style>
 </head>
 <body>
+
+<%
+    if (request.getSession() != null) {
+        if (session.getAttribute("user") == null) {
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+            //request.setAttribute("error", "Please login to continue!");
+            requestDispatcher.forward(request, response);
+        }
+    }
+%>
 <section id="center1">
     <div class="container" id="rcorners1">
         <div class="wrapper">
@@ -234,13 +248,14 @@
                 <nav>
                     <li>
                         <div class="search">
-                            <form action="/action_page.php">
-                                <input name="search" placeholder="Search Movies" size="15" type="text"></form>
+                            <div class="row">
+                                <a href="LogoutServlet" style="text-align:center;color:white" class="btn">Logout</a>
+                            </div>
                         </div>
                     </li>
                 </nav>
             </div>
-            <div class="box c">
+            <!--<div class="box c">
                 <nav>
                     <li>
                         <div class="login">
@@ -256,8 +271,10 @@
                     </li>
                 </nav>
             </div>
+            -->
         </div>
     </div>
+
     <div class="container" id="rcorners_hr">
         <hr style="width:92%">
     </div>
@@ -290,7 +307,9 @@
         <div class="block"><img class="float" id="left" src="https://www.w3schools.com/css/paris.jpg" alt="Paris"></div>
         More Reviews!
     </div>
+    <span id="error_msg"></span>
 </section>
+<p>${error}</p>
 </body>
 </html>
 

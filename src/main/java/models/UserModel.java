@@ -1,5 +1,7 @@
 package models;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class UserModel {
@@ -8,11 +10,11 @@ public class UserModel {
     Date creation_date;
     int privilege;
 
-    public UserModel(String email, String name) {
+    public UserModel(String email, String name, String password, int privilege ) {
         this.email = email;
         this.name = name;
         this.password = password;
-        this.creation_date = creation_date;
+        //this.creation_date = creation_date;
         this.privilege = privilege;
     }
 
@@ -47,7 +49,7 @@ public class UserModel {
         this.creation_date = creation_date;
     }
 
-    public int getPrivilege(int privilege) {
+    public int getPrivilege() {
         return privilege;
     }
 
